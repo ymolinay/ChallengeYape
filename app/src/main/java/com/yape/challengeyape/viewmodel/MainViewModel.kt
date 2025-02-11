@@ -24,6 +24,10 @@ class MainViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState
 
+    init {
+        fetchData()
+    }
+
     fun fetchData() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading

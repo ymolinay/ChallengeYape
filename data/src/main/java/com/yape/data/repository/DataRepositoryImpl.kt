@@ -6,6 +6,10 @@ import com.yape.domain.repository.DataRepository
 
 class DataRepositoryImpl(private val apiService: ApiService) : DataRepository {
     override suspend fun getData(): List<Recipe> {
-        return apiService.getData().map { it.toEntity() }
+        return try {
+            apiService.getData().map { it.toEntity() }
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 }
