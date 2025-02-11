@@ -4,7 +4,8 @@ import com.yape.domain.model.Recipe
 
 data class RecipeDto(
     val id: Int,
-    val name: String
+    val name: String,
+    val description: String,
 ) {
-    fun toEntity() = Recipe(id, name)
+    fun toEntity() = Recipe(id, name, description)
 }
