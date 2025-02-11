@@ -17,12 +17,12 @@ sealed class UiState {
 }
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+open class MainViewModel @Inject constructor(
     private val getDataUseCase: GetDataUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
-    val uiState: StateFlow<UiState> = _uiState
+    open val uiState: StateFlow<UiState> = _uiState
 
     init {
         fetchData()
